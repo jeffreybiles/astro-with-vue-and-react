@@ -2,9 +2,9 @@
   <div className="vue-component">
     <Hello />
     <div>
-      {{count}}
+      {{$count}}
     </div>
-    <button @click="() => count = count + 1">
+    <button @click="() => count.set($count + 1)">
       + 1
     </button>
     <div style="border:1px solid black; padding: 4px;">
@@ -17,7 +17,10 @@
 import { ref } from 'vue';
 import Hello from './AnotherComponent.vue'
 
-const count = ref(0)
+import { count } from '../stores/count'
+import { useStore } from '@nanostores/vue'
+
+const $count = useStore(count)
 </script>
 
 <style scoped>
