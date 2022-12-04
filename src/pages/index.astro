@@ -6,7 +6,7 @@ import ReactCounter from '../components/Counter'
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<main class="astro">
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<ReactCounter client:load />
 		<p class="instructions">
@@ -80,5 +80,44 @@ import ReactCounter from '../components/Counter'
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
+	}
+</style>
+
+<style is:global>
+		.vue-component, .react-component, .astro {
+		position: relative;
+		padding: 4px;
+		border: 2px solid;
+	}
+	.vue-component {
+		border-color: green;
+		background-color: lightgreen;
+	}
+	.react-component {
+		border-color:blue;
+		background-color: lightblue;
+	}
+	.astro {
+		border-color: purple;
+		background-color: plum;
+	}
+
+	.vue-component:before, .react-component:before, .astro:before {
+		position: absolute;
+  	height: 100%;
+		width: 100%;
+		text-align: right;
+		right: 4px;
+		opacity: 0.4;
+		pointer-events: none;
+	}
+	.astro:before {
+		content: "astro";
+	}
+	.vue-component:before {
+		content: "vue";
+	}
+	.react-component:before {
+		content: "react"
 	}
 </style>
